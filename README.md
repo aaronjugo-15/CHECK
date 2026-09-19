@@ -1,7 +1,7 @@
 ## EXPERIMENT 4: DATA WRANGLING AND DATA VISUALIZATION
 ### Aaron Siegfreid R. Jugo
 ### 2ECE-A
-### August 31, 2026
+### September 19, 2026
 
 ### Objectives:
 At the end of this laboratory activity, the student should be able to:
@@ -23,80 +23,101 @@ Display the resulting DataFrame and its number of rows. Both filtering condition
 
 Code:
 
-`​`​`python
+```
 import pandas as pd
 import matplotlib.pyplot as plt
-
+```
+```
 df = pd.read_excel('board2.xlsx')
-df['Average'] = (df.Math + df.Electronics + df.GEAS + df.Communication) / 4
+df ['Average'] = (df.Math + df.Electronics + df.GEAS + df.Communication)/4
 
-display(df)
-`​`​``
+display (df)
+```
 
-`​`​`
-VisComm = df[(df['Hometown'] == 'Visayas') & 
+
+```
+VisComm = df[(df['Hometown'] == 'Visayas') &
              (df['Track'] == 'Communication')
-            ][['Name', 'Gender', 'Math', 'Electronics', 'Average']]
+             ][['Name', 'Gender', 'Math', 'Electronics', 'Average']]
 
-display(VisComm)
+display (VisComm)
 
-print("Number of Rows:", len(VisComm))
-`​`​`
+print ("Number of Rows:", len(VisComm))
+```
 
-Output: The output aligned with the required result:
+Output: 
 
-*   Displayed the loaded DataFrame with computed Average column: | | Name | Gender | Track | Hometown | Math | Electronics | GEAS | Communication | Average | |---|---|---|---|---|---|---|---|---|---| | 0 | S1 | Male | Instrumentation | Luzon | 58 | 89 | 75 | 78 | 75.00 | | 1 | S2 | Female | Communication | Mindanao | 52 | 75 | 90 | 52 | 67.25 | | 2 | S3 | Female | Instrumentation | Mindanao | 83 | 74 | 77 | 57 | 72.75 | | 3 | S4 | Male | Instrumentation | Visayas | 65 | 58 | 91 | 68 | 70.50 | | 4 | S5 | Male | Communication | Luzon | 59 | 86 | 43 | 88 | 69.00 | | ... | ... | ... | ... | ... | ... | ... | ... | ... | ... | | 28 | S29 | Male | Instrumentation | Mindanao | 73 | 48 | 71 | 62 | 63.50 | | 29 | S30 | Male | Instrumentation | Luzon | 78 | 81 | 57 | 56 | 68.00 |
+The output aligned with the required result:
+- Displayed Data Frame
 
-_(30 rows × 9 columns)_
+<img width="670" height="437" alt="image" src="https://github.com/user-attachments/assets/2bd7bf16-73d4-45c9-a13b-7324585dccc8" />
 
-*   Displayed the VisComm DataFrame and its row count: | | Name | Gender | Math | Electronics | Average | |---|---|---|---|---|---| | 10 | S11 | Female | 48 | 56 | 54.75 | | 11 | S12 | Male | 89 | 67 | 76.00 | | 17 | S18 | Male | 81 | 40 | 63.50 | | 21 | S22 | Female | 64 | 39 | 62.50 | | 27 | S28 | Male | 85 | 53 | 67.75 |
-    
+- Displayed Visayas Communication Data Frame and the number of rows
+
+<img width="362" height="185" alt="image" src="https://github.com/user-attachments/assets/d6328eb2-4c3b-4728-94d8-ce6c5b9e5408" />
+
+
 `​`​`
 Number of Rows: 5
 `​`​`
 
+-----------------------------------------------
 ### B. VISAYAS FEMALE DATAFRAME
 
 Create a second DataFrame named VisFemale containing students whose Hometown is Visayas and whose Gender is Female. Retain only: Name, Track, GEAS, Electronics, Average. Display VisFemale. Then display only the rows of VisFemale whose Average is at least 60. Do not overwrite VisFemale when performing this second filter.
 
 Code:
 
-`​`​`
-VisFemale = df[(df['Hometown'] == 'Visayas') & (df['Gender'] == 'Female')][['Name', 'Track', 'GEAS', 'Electronics', 'Average']]
-display(VisFemale)
+```
 
-print("\nFemale Students in Visayas that averages at least 60 in GEAS and Electronics")
-display(VisFemale[VisFemale['Average'] >= 60])
-`​`​`
+VisFemale = df[(df['Hometown']=='Visayas') & (df['Gender'] == 'Female')][['Name', 'Track', 'GEAS', 'Electronics', 'Average']]
+display (VisFemale)
 
-Output: The output aligned with the required result:
+print ("\nFemale Students in Visayas that averages at least 60 in GEAS and Electronics")
+display (VisFemale[VisFemale['Average']>=60])
+```
 
-*   Displayed the VisFemale DataFrame: | | Name | Track | GEAS | Electronics | Average | |---|---|---|---|---|---| | 5 | S6 | Microelectronics | 86 | 45 | 75.50 | | 10 | S11 | Communication | 48 | 56 | 54.75 | | 20 | S21 | Microelectronics | 68 | 51 | 68.50 | | 21 | S22 | Communication | 89 | 39 | 62.50 | | 23 | S24 | Microelectronics | 60 | 45 | 57.75 | | 25 | S26 | Instrumentation | 83 | 47 | 65.75 |
-*   Displayed female students in Visayas with an Average of at least 60:
+
+Output: 
+
+The output aligned with the required result:
+
+- Displayed female data frame, and the average of at least 60
+
+
+<img width="378" height="212" alt="image" src="https://github.com/user-attachments/assets/6aaf83b1-ef3d-4104-be00-059418dfd023" />
+
+
     
 `​`​`
 Female Students in Visayas that averages at least 60 in GEAS and Electronics
 `​`​`
 
-|     | Name | Track | GEAS | Electronics | Average |
-| --- | --- | --- | --- | --- | --- |
-| 5   | S6  | Microelectronics | 86  | 45  | 75.50 |
-| 20  | S21 | Microelectronics | 68  | 51  | 68.50 |
-| 21  | S22 | Communication | 89  | 39  | 62.50 |
-| 25  | S26 | Instrumentation | 83  | 47  | 65.75 |
+
+
+<img width="407" height="162" alt="image" src="https://github.com/user-attachments/assets/458551d0-9e6f-4679-88b3-f79a0eca6c61" />
+
+--------------------------------------------------------------
 
 ### C. CATEGORY-AVERAGE VISUALIZATION
 
-Examine how the recorded Average differs across the three categorical features Track, Gender, and Hometown. a. For each feature, compute the mean of Average for every category using Pandas. b. Display the three summary tables. c. Create one figure containing three bar charts: mean Average by Track, by Gender, and by Hometown. d. Below the figure, write three concise statements identifying the category with the highest sample mean for each feature.
+Examine how the recorded Average differs across the three categorical features: Track, Gender, and Hometown. 
+
+a. For each feature, compute the mean of the average for every category using Pandas. 
+
+b. Display the three summary tables. 
+
+c. Create one figure containing three bar charts: mean Average by Track, by Gender, and by Hometown. d. Below the figure, write three concise statements identifying the category with the highest sample mean for each feature.
 
 Code:
 
-`​`​`
-# A & B: Compute and display mean Average summaries
+```
+#A 
 m_track = df.groupby('Track')['Average'].mean().reset_index()
 m_gender = df.groupby('Gender')['Average'].mean().reset_index()
 m_hometown = df.groupby('Hometown')['Average'].mean().reset_index()
 
+#B
 print("\nMean Average by Track")
 display(m_track)
 
@@ -105,10 +126,11 @@ display(m_gender)
 
 print("\nMean Average by Hometown")
 display(m_hometown)
-`​`​`
+```
 
-`​`​`
-# C: Generate comparison bar charts
+
+```
+#C
 fig, axes = plt.subplots(1, 3, figsize=(18, 5), sharey=True)
 fig.suptitle('Mean of Board Exam Average by Category', fontsize=16, fontweight='bold')
 
@@ -130,10 +152,11 @@ axes[2].set_ylabel('Mean Average Score')
 
 plt.tight_layout()
 plt.show()
-`​`​`
+```
 
-`​`​`
-# D: Interpretation statements
+
+```
+#D
 highest_track = m_track.loc[m_track['Average'].idxmax(), 'Track']
 highest_gender = m_gender.loc[m_gender['Average'].idxmax(), 'Gender']
 highest_hometown = m_hometown.loc[m_hometown['Average'].idxmax(), 'Hometown']
@@ -142,52 +165,26 @@ print("\n  Statement:")
 print(f"1. Among the tracks, the {highest_track} track obtained the highest sample mean for Average.")
 print(f"2. Between genders, {highest_gender} students achieved the highest sample mean for Average.")
 print(f"3. Across the hometown regions, students from {highest_hometown} recorded the highest sample mean for Average.")
-`​`​`
+```
+
 
 Output: The output aligned with the required result:
 
-*   Displayed the three category mean tables:
-    
-`​`​`
-Mean Average by Track
-`​`​`
+- Displayed the three category mean tables:
 
-|     | Track | Average |
-| --- | --- | --- |
-| 0   | Communication | 67.975 |
-| 1   | Instrumentation | 65.225 |
-| 2   | Microelectronics | 67.500 |
+<img width="197" height="455" alt="image" src="https://github.com/user-attachments/assets/651a1289-1ac5-4cff-98ed-4c3e8f8691e7" />
 
-`​`​`
-Mean Average by Gender
-`​`​`
 
-|     | Gender | Average |
-| --- | --- | --- |
-| 0   | Female | 66.616667 |
-| 1   | Male | 67.183333 |
+- Displayed bar charts comparing mean board exam averages across Track, Gender, and Hometown:
+  
+<img width="1102" height="290" alt="image" src="https://github.com/user-attachments/assets/243d3e84-98c4-4617-a996-31a1c1f8eb23" />
 
-`​`​`
-Mean Average by Hometown
-`​`​`
 
-|     | Hometown | Average |
-| --- | --- | --- |
-| 0   | Luzon | 68.083333 |
-| 1   | Mindanao | 66.678571 |
-| 2   | Visayas | 65.750000 |
+- Printed interpretation statements:
 
-*   Displayed bar charts comparing mean board exam averages across Track, Gender, and Hometown:
-
-_(Visualization Output: 1×3 subplot bar charts plotting Mean of Board Exam Average by Category)_
-
-*   Printed interpretation statements:
-
-`​`​`
-  Statement:
+```
+Statement:
 1. Among the tracks, the Communication track obtained the highest sample mean for Average.
 2. Between genders, Male students achieved the highest sample mean for Average.
 3. Across the hometown regions, students from Luzon recorded the highest sample mean for Average.
-`​`​`
-
-Powered by Gemini Exporter (https://www.ai-chat-exporter.com)
+```
