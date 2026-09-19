@@ -1,10 +1,3 @@
-# Google Gemini
-
-**Exported:** 9/19/2026 21:40:01  
-
-## Gemini:
-
-`​`​``
 ## EXPERIMENT 4: DATA WRANGLING AND DATA VISUALIZATION
 ### Aaron Siegfreid R. Jugo
 ### 2ECE-A
